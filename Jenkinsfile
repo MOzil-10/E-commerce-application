@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "mukosi10/spring-boot-app"
+        DOCKER_IMAGE = "mukosi10/ecommerce-spring-boot-app"
         DOCKER_TAG = "latest"
     }
 
