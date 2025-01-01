@@ -22,8 +22,8 @@ It includes features like user registration and management, with unit tests impl
 Prerequisites
 Before you can run this project locally, make sure you have the following installed:
 
--Java 17
--Docker (for running the application and database in containers)
--PostgreSQL (if not using Docker for the database)
--Jenkins (for build automation, if using Jenkins on your local machine)
--ngrok (for exposing Jenkins locally to the public)
+- Java 17
+- Docker (for running the application and database in containers)
+- PostgreSQL (if not using Docker for the database)
+- Jenkins (for build automation, if using Jenkins on your local machine)
+- ngrok (for exposing Jenkins locally to the public)
