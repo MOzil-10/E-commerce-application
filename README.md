@@ -4,19 +4,19 @@ It includes features like user registration and management, with unit tests impl
 
 ## Features
 - **User Management**: User registration and management functionality.
--**Unit Testing**: Unit tests to ensure reliability and quality of code.
--**CI/CD Integration**: Jenkins integration triggered via WebHooks when changes are pushed to the main branch.
--**Docker**: Dockerized application and PostgreSQL database for easy deployment and scalability.
--**Jenkins**: Continuous integration using Jenkins with Maven for build automation.
+- **Unit Testing**: Unit tests to ensure reliability and quality of code.
+- **CI/CD Integration**: Jenkins integration triggered via WebHooks when changes are pushed to the main branch.
+- **Docker**: Dockerized application and PostgreSQL database for easy deployment and scalability.
+- **Jenkins**: Continuous integration using Jenkins with Maven for build automation.
 
 ## Tech Stack
--**Backend**: Spring Boot, Java 17
--**Database**: PostgreSQL
--**ORM**: JPA (Java Persistence API)
--**Testing**: JUnit
--**CI/CD**: Jenkins, WebHooks, Maven
--**Containerization**: Docker
--**Version Control**: GitHub
+- **Backend**: Spring Boot, Java 17
+- **Database**: PostgreSQL
+- **ORM**: JPA (Java Persistence API)
+- **Testing**: JUnit
+- **CI/CD**: Jenkins, WebHooks, Maven
+- **Containerization**: Docker
+- **Version Control**: GitHub
 
 ## Getting Started
 Prerequisites
