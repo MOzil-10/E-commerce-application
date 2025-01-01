@@ -29,6 +29,11 @@ public class UserService {
      * @return The registered user.
      */
     public User registerUser(User user) {
+
+        userRepository.findByEmail(user.getEmail()).ifPresent(existingUser -> {
+            throw new RuntimeException("User with email " + user.getEmail() + " already exists");
+        });
+
         if (user.getRole() == null) {
             user.setRole(Role.CUSTOMER);
         }
@@ -75,7 +80,7 @@ public class UserService {
      * @param updatedUser The updated user information.
      * @return The updated user.
      */
-    public User updateUser(int userId, User updatedUser) {
+    public User updateUser(Long userId, User updatedUser) {
         User existingUser = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
@@ -93,7 +98,7 @@ public class UserService {
      *
      * @param userId The ID of the user to delete.
      */
-    public void deleteUser(int userId) {
+    public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
 }

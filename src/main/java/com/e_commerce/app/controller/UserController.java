@@ -52,7 +52,7 @@ public class UserController {
      * @return The updated user.
      */
     @PutMapping("/{userId}")
-    public ResponseEntity<User> updateUser(@PathVariable int userId, @Valid @RequestBody User updatedUser) {
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @Valid @RequestBody User updatedUser) {
         User updatedUserResult = userService.updateUser(userId, updatedUser);
         return ResponseEntity.ok(updatedUserResult);
     }
@@ -64,7 +64,7 @@ public class UserController {
      * @return A response entity indicating the result.
      */
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
