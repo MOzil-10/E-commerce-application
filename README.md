@@ -1,7 +1,10 @@
 **E-Commerce Application**
-This is a simple e-commerce application built using Spring Boot, Java 17, PostgreSQL, and JPA. The project is designed to practice concepts such as unit testing, CI/CD integration, and containerization with Docker. It includes features like user registration and management, with unit tests implemented for the service and controller layers.
+
+This is a simple e-commerce application built using Spring Boot, Java 17, PostgreSQL, and JPA. The project is designed to practice concepts such as unit testing, CI/CD integration, and containerization with Docker. 
+It includes features like user registration and management, with unit tests implemented for the service and controller layers.
 
 **Features**
+
 User Management: User registration and management functionality.
 Unit Testing: Unit tests to ensure reliability and quality of code.
 CI/CD Integration: Jenkins integration triggered via WebHooks when changes are pushed to the main branch.
