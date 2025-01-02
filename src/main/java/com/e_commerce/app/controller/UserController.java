@@ -1,6 +1,7 @@
 package com.e_commerce.app.controller;
 
 import com.e_commerce.app.model.User;
+import com.e_commerce.app.request.LoginRequest;
 import com.e_commerce.app.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,22 @@ public class UserController {
     public ResponseEntity<User> registerUser(@Valid @RequestBody User user) {
         User registeredUser = userService.registerUser(user);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
+    }
+
+    /**
+     * Login user and generate a JWT token.
+     *
+     * @param loginRequest The login request containing the email and password.
+     * @return A ResponseEntity containing the JWT token.
+     */
+    @PostMapping("/login")
+    public ResponseEntity<String> generateToken(@Valid @RequestBody LoginRequest loginRequest) {
+        Optional<User> user = userService.findUserByEmail(loginRequest.getEmail());
+        if (user.isPresent() && user.get().getPasswords().equals(loginRequest.getPassword())) {
+            String token = userService.generateToken(user.get());
+            return ResponseEntity.ok(token);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 
     /**
@@ -69,19 +86,4 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    /**
-     * Generate a JWT token for the user.
-     *
-     * @param email The email of the user to generate the token for.
-     * @return The generated JWT token.
-     */
-    @PostMapping("/login")
-    public ResponseEntity<String> generateToken(@RequestParam String email, String password) {
-        Optional<User> user = userService.findUserByEmail(email);
-        if (user.isPresent()) {
-            String token = userService.generateToken(user.get());
-            return ResponseEntity.ok(token);
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
 }

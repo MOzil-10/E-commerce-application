@@ -1,4 +1,4 @@
-package com.e_commerce.app.userControllerTest;
+package com.e_commerce.app.ControllerTest;
 
 import com.e_commerce.app.controller.UserController;
 import com.e_commerce.app.enums.Role;

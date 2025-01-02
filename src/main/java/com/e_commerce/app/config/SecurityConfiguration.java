@@ -8,11 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -42,13 +37,6 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/api/auth/**",
-                                "/v2/api-docs/**",
-                                "/v3/api-docs/**",
-                                "/swagger-resources/**",
-                                "/configuration/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
                                 "/api/users/register",
                                 "/api/users/login"
                         ).permitAll()
@@ -62,24 +50,5 @@ public class SecurityConfiguration {
                 .cors(withDefaults());
 
         return http.build();
-    }
-
-    /**
-     * Configures CORS settings for the application, specifying allowed origins, methods, headers, and credentials.
-     *
-     * @return the CorsConfigurationSource containing the configured CORS settings
-     */
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:8082"));
-        configuration.setAllowedMethods(List.of("GET", "POST"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        configuration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        return source;
     }
 }

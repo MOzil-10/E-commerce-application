@@ -1,4 +1,4 @@
-package com.e_commerce.app.userServiceTest;
+package com.e_commerce.app.ServiceTest;
 
 import com.e_commerce.app.model.User;
 import com.e_commerce.app.repository.UserRepository;
@@ -47,7 +47,7 @@ public class UserServiceTest {
 
         when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.empty());
         when(passwordEncoder.encode(user.getPasswords())).thenReturn("encodedPassword");
-        when(userRepository.save(any(User.class))).thenReturn(user);  // Mock save to return the user
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
         User registeredUser = userService.registerUser(user);
 
@@ -55,7 +55,7 @@ public class UserServiceTest {
         verify(passwordEncoder, times(1)).encode("password");
         verify(userRepository, times(1)).save(any(User.class));
 
-        assertNotNull(registeredUser);  // Ensure that registeredUser is not null
+        assertNotNull(registeredUser);
         assertEquals("encodedPassword", registeredUser.getPasswords());
         assertEquals("CUSTOMER", registeredUser.getRole().name());
     }
